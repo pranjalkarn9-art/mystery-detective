@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mystery Detective</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<button id="themeBtn" class="theme-btn">🌙</button>
+
+<header>
+
+    <div class="brand">
+        <div class="logo">🕵️</div>
+
+        <div>
+            <h1>MYSTERY DETECTIVE</h1>
+            <p>Observe. Think. Solve.</p>
+        </div>
+    </div>
+
+    <div class="header-stats">
+        ⭐ <span id="totalScore">0</span>
+    </div>
+
+</header>
+
+
+<main>
+
+<!-- HOME -->
+
+<section id="home" class="screen active">
+
+    <div class="hero">
+
+        <div class="magnify">🔎</div>
+
+        <div class="eyebrow">
+            DETECTIVE HEADQUARTERS
+        </div>
+
+        <h2>
+            Can you solve<br>
+            <span>the mystery?</span>
+        </h2>
+
+        <p>
+            Examine clues, question the evidence,
+            and identify the culprit.
+        </p>
+
+        <div class="detective-card">
+
+            <div class="rank-icon">🥉</div>
+
+            <div>
+                <small>YOUR RANK</small>
+
+                <strong id="rank">
+                    Rookie Detective
+                </strong>
+            </div>
+
+        </div>
+
+        <button id="startBtn" class="primary-btn">
+            🕵️ START INVESTIGATION
+        </button>
+
+    </div>
+
+
+    <div class="stats-grid">
+
+        <div>
+            🎯
+            <b id="casesSolved">0</b>
+            <small>Cases Solved</small>
+        </div>
+
+        <div>
+            ⭐
+            <b id="totalScoreHome">0</b>
+            <small>Total Score</small>
+        </div>
+
+        <div>
+            🔥
+            <b id="bestStreak">0</b>
+            <small>Best Streak</small>
+        </div>
+
+        <div>
+            🏆
+            <b id="bestRank">Rookie</b>
+            <small>Current Rank</small>
+        </div>
+
+    </div>
+
+
+    <div class="how">
+
+        <h3>🔍 How to Investigate</h3>
+
+        <div class="how-grid">
+
+            <div>
+                <span>1</span>
+                <b>Read the case</b>
+                <p>Understand what happened.</p>
+            </div>
+
+            <div>
+                <span>2</span>
+                <b>Study clues</b>
+                <p>Look for important details.</p>
+            </div>
+
+            <div>
+                <span>3</span>
+                <b>Examine suspects</b>
+                <p>Compare their stories.</p>
+            </div>
+
+            <div>
+                <span>4</span>
+                <b>Make your accusation</b>
+                <p>Choose the culprit.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- CASE -->
+
+<section id="case" class="screen">
+
+    <div class="case-header">
+
+        <button id="homeBtn" class="back-btn">
+            ← Headquarters
+        </button>
+
+        <div>
+            <span id="caseNumber">
+                CASE #001
+            </span>
+
+            <h2 id="caseTitle">
+                The Missing Trophy
+            </h2>
+        </div>
+
+        <div class="case-score">
+            ⭐ <span id="caseScore">0</span>
+        </div>
+
+    </div>
+
+
+    <div class="progress">
+        <div id="progressBar"></div>
+    </div>
+
+
+    <div class="case-description">
+
+        <div class="file-icon">
+            📁
+        </div>
+
+        <div>
+
+            <div class="eyebrow">
+                CASE FILE
+            </div>
+
+            <h3 id="storyTitle">
+                The Missing Trophy
+            </h3>
+
+            <p id="story">
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="section-title">
+        🔎 Evidence & Clues
+    </div>
+
+
+    <div id="clues" class="clues"></div>
+
+
+    <div class="section-title">
+        🧑‍💼 Suspects
+    </div>
+
+
+    <div id="suspects" class="suspects"></div>
+
+
+    <div class="actions">
+
+        <button id="hintBtn" class="secondary-btn">
+            💡 Use Hint
+            <span id="hintCount">2</span>
+        </button>
+
+        <button id="accuseBtn" class="primary-btn disabled">
+            ⚖️ Make Accusation
+        </button>
+
+    </div>
+
+
+    <div id="message" class="message"></div>
+
+</section>
+
+
+
+<!-- RESULT -->
+
+<section id="result" class="screen">
+
+    <div class="result-card">
+
+        <div id="resultIcon" class="result-icon">
+            🏆
+        </div>
+
+        <div class="eyebrow">
+            INVESTIGATION COMPLETE
+        </div>
+
+        <h2 id="resultTitle">
+            Case Solved!
+        </h2>
+
+        <p id="resultText">
+        </p>
+
+
+        <div class="result-stats">
+
+            <div>
+                ⭐
+                <b id="earnedScore">0</b>
+                <small>Score</small>
+            </div>
+
+            <div>
+                🔍
+                <b id="clueCount">0</b>
+                <small>Clues Used</small>
+            </div>
+
+            <div>
+                🔥
+                <b id="resultStreak">0</b>
+                <small>Streak</small>
+            </div>
+
+        </div>
+
+
+        <div id="explanation" class="explanation">
+        </div>
+
+
+        <button id="nextBtn" class="primary-btn">
+            🔎 NEXT CASE
+        </button>
+
+        <button id="resultHomeBtn" class="secondary-btn">
+            🏠 HEADQUARTERS
+        </button>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+    Made with HTML, CSS & JavaScript • Pranjal's Game Zone 🎮
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
