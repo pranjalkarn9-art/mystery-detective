@@ -3,9 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Mystery Detective</title>
-
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,10 +12,8 @@
 <button id="themeBtn" class="theme-btn">🌙</button>
 
 <header>
-
     <div class="brand">
         <div class="logo">🕵️</div>
-
         <div>
             <h1>MYSTERY DETECTIVE</h1>
             <p>Observe. Think. Solve.</p>
@@ -25,15 +21,14 @@
     </div>
 
     <div class="header-stats">
-        ⭐ <span id="totalScore">0</span>
+        🪙 <span id="coins">100</span>
+        &nbsp; ⭐ <span id="totalScore">0</span>
     </div>
-
 </header>
-
 
 <main>
 
-<!-- HOME -->
+<!-- ================= HOME ================= -->
 
 <section id="home" class="screen active">
 
@@ -41,30 +36,29 @@
 
         <div class="magnify">🔎</div>
 
-        <div class="eyebrow">
-            DETECTIVE HEADQUARTERS
-        </div>
+        <div class="eyebrow">DETECTIVE HEADQUARTERS</div>
 
         <h2>
             Can you solve<br>
-            <span>the mystery?</span>
+            <span>the mysteries?</span>
         </h2>
 
         <p>
-            Examine clues, question the evidence,
-            and identify the culprit.
+            Examine evidence, question statements,
+            manage your time and identify the culprit.
         </p>
 
         <div class="detective-card">
 
-            <div class="rank-icon">🥉</div>
+            <div class="rank-icon" id="rankIcon">🥉</div>
 
             <div>
                 <small>YOUR RANK</small>
-
-                <strong id="rank">
-                    Rookie Detective
-                </strong>
+                <strong id="rank">Rookie Detective</strong>
+                <div class="xp-bar">
+                    <div id="xpBar"></div>
+                </div>
+                <small id="xpText">0 XP</small>
             </div>
 
         </div>
@@ -74,7 +68,6 @@
         </button>
 
     </div>
-
 
     <div class="stats-grid">
 
@@ -97,15 +90,72 @@
         </div>
 
         <div>
-            🏆
-            <b id="bestRank">Rookie</b>
-            <small>Current Rank</small>
+            🪙
+            <b id="coinsHome">100</b>
+            <small>Coins</small>
         </div>
 
     </div>
 
+    <div class="dashboard-grid">
 
-    <div class="how">
+        <div class="panel">
+
+            <h3>📂 Case Progress</h3>
+
+            <div class="big-progress">
+                <div id="caseProgress"></div>
+            </div>
+
+            <p id="caseProgressText">
+                0 / 10 cases solved
+            </p>
+
+        </div>
+
+        <div class="panel">
+
+            <h3>🏆 Achievements</h3>
+
+            <div id="achievements" class="achievement-list"></div>
+
+        </div>
+
+    </div>
+
+    <div class="shop panel">
+
+        <h3>🛒 Detective Shop</h3>
+
+        <div class="shop-grid">
+
+            <button class="shop-item" onclick="buyTime(30)">
+                ⏱️
+                <b>+30 Seconds</b>
+                <small>🪙 30 coins</small>
+            </button>
+
+            <button class="shop-item" onclick="buyTime(60)">
+                ⏰
+                <b>+60 Seconds</b>
+                <small>🪙 50 coins</small>
+            </button>
+
+            <button class="shop-item" onclick="buyHint()">
+                💡
+                <b>Extra Hint</b>
+                <small>🪙 40 coins</small>
+            </button>
+
+        </div>
+
+        <p class="shop-note">
+            Purchases are available during an investigation.
+        </p>
+
+    </div>
+
+    <div class="how panel">
 
         <h3>🔍 How to Investigate</h3>
 
@@ -120,30 +170,33 @@
             <div>
                 <span>2</span>
                 <b>Study clues</b>
-                <p>Look for important details.</p>
+                <p>Find connections in the evidence.</p>
             </div>
 
             <div>
                 <span>3</span>
-                <b>Examine suspects</b>
-                <p>Compare their stories.</p>
+                <b>Question suspects</b>
+                <p>Compare their statements.</p>
             </div>
 
             <div>
                 <span>4</span>
                 <b>Make your accusation</b>
-                <p>Choose the culprit.</p>
+                <p>Choose carefully.</p>
             </div>
 
         </div>
 
     </div>
 
+    <button id="resetBtn" class="danger-btn">
+        ♻️ Reset Detective Progress
+    </button>
+
 </section>
 
 
-
-<!-- CASE -->
+<!-- ================= CASE ================= -->
 
 <section id="case" class="screen">
 
@@ -154,55 +207,53 @@
         </button>
 
         <div>
-            <span id="caseNumber">
-                CASE #001
-            </span>
-
-            <h2 id="caseTitle">
-                The Missing Trophy
-            </h2>
+            <span id="caseNumber">CASE #001</span>
+            <h2 id="caseTitle">The Missing Trophy</h2>
         </div>
 
         <div class="case-score">
+            🪙 <span id="caseCoins">100</span>
+            <br>
             ⭐ <span id="caseScore">0</span>
         </div>
 
     </div>
 
+    <div class="timer-box">
+
+        <div>
+            ⏱️ TIME REMAINING
+        </div>
+
+        <strong id="timer">90</strong>
+
+    </div>
 
     <div class="progress">
         <div id="progressBar"></div>
     </div>
 
-
     <div class="case-description">
 
-        <div class="file-icon">
-            📁
-        </div>
+        <div class="file-icon">📁</div>
 
         <div>
 
-            <div class="eyebrow">
-                CASE FILE
-            </div>
+            <div class="eyebrow">CASE FILE</div>
 
             <h3 id="storyTitle">
                 The Missing Trophy
             </h3>
 
-            <p id="story">
-            </p>
+            <p id="story"></p>
 
         </div>
 
     </div>
 
-
     <div class="section-title">
         🔎 Evidence & Clues
     </div>
-
 
     <div id="clues" class="clues"></div>
 
@@ -210,7 +261,6 @@
     <div class="section-title">
         🧑‍💼 Suspects
     </div>
-
 
     <div id="suspects" class="suspects"></div>
 
@@ -222,20 +272,72 @@
             <span id="hintCount">2</span>
         </button>
 
+        <button id="shopBtn" class="secondary-btn">
+            🛒 Shop
+        </button>
+
         <button id="accuseBtn" class="primary-btn disabled">
             ⚖️ Make Accusation
         </button>
 
     </div>
 
-
     <div id="message" class="message"></div>
 
 </section>
 
 
+<!-- ================= SHOP ================= -->
 
-<!-- RESULT -->
+<section id="shopScreen" class="screen">
+
+    <div class="shop-page panel">
+
+        <button id="shopBackBtn" class="back-btn">
+            ← Back to Investigation
+        </button>
+
+        <div class="eyebrow">DETECTIVE SUPPLY STORE</div>
+
+        <h2>🛒 Detective Shop</h2>
+
+        <p>
+            Spend your coins to gain an advantage.
+        </p>
+
+        <div class="shop-grid">
+
+            <button class="shop-item" onclick="buyTime(30)">
+                ⏱️
+                <b>+30 Seconds</b>
+                <small>🪙 30 coins</small>
+            </button>
+
+            <button class="shop-item" onclick="buyTime(60)">
+                ⏰
+                <b>+60 Seconds</b>
+                <small>🪙 50 coins</small>
+            </button>
+
+            <button class="shop-item" onclick="buyHint()">
+                💡
+                <b>Extra Hint</b>
+                <small>🪙 40 coins</small>
+            </button>
+
+        </div>
+
+        <div class="shop-balance">
+            🪙 Your balance:
+            <b id="shopCoins">100</b>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= RESULT ================= -->
 
 <section id="result" class="screen">
 
@@ -253,9 +355,7 @@
             Case Solved!
         </h2>
 
-        <p id="resultText">
-        </p>
-
+        <p id="resultText"></p>
 
         <div class="result-stats">
 
@@ -266,9 +366,15 @@
             </div>
 
             <div>
-                🔍
-                <b id="clueCount">0</b>
-                <small>Clues Used</small>
+                🪙
+                <b id="earnedCoins">0</b>
+                <small>Coins</small>
+            </div>
+
+            <div>
+                ⏱️
+                <b id="timeUsed">0</b>
+                <small>Seconds</small>
             </div>
 
             <div>
@@ -279,10 +385,7 @@
 
         </div>
 
-
-        <div id="explanation" class="explanation">
-        </div>
-
+        <div id="explanation" class="explanation"></div>
 
         <button id="nextBtn" class="primary-btn">
             🔎 NEXT CASE
@@ -298,11 +401,9 @@
 
 </main>
 
-
 <footer>
     Made with HTML, CSS & JavaScript • Pranjal's Game Zone 🎮
 </footer>
-
 
 <script src="script.js"></script>
 
